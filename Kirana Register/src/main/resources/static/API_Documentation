@@ -1,0 +1,131 @@
+
+**Main Path of Endpoints :** '/KiranaRegisterAPI'
+The KiranaRegisterAPI follows RESTful conventions where HTTP methods
+(GET, PUT, DELETE) are used for specific actions, and the response codes are used
+to indicate the result of the operation.
+
+
+
+
+
+
+## save Transaction
+
+**Endpoint:** `/KiranaRegisterAPI/save`
+
+**Method:** `POST`
+
+**Parameters:**
+- `currency` (string): should be in format of "USD" / "INR"
+**Request Body**
+Transaction_Register: JSON object containing updated transaction details.
+- 'customerRegister' (
+                           String name;
+                           String description;
+                           String credit_amount;
+                           String debit_amount;
+                          )   : should be in proper format of "String_input".
+**Response:**
+- 200 OK: blank screen values saved in database.
+- 500 Not Found: says internal server error, check for input value format as well.
+- 404 Not Found: check if endpoint entered correctly.
+
+
+
+
+
+## Get all existing Transaction
+
+**Endpoint:** `/getAllTransactions`
+
+**Method:** `GET`
+
+**Parameters:**
+NA
+
+**Response:**
+- 200 OK: List of all existing transactions in database.
+- 500 Not Found: says internal server error, check for input value format as well.
+- 404 Not Found: check if endpoint entered correctly.
+
+
+
+
+
+
+## Get Transaction by Date
+
+**Endpoint:** `/getTransactionByDate`
+
+**Method:** `GET`
+
+**Parameters:**
+- `date` (string): The date in the format 'YYYY-MM-DD'.
+
+**Response:**
+- 200 OK: List of transactions on given date.
+- 404 Not Found: If no transactions are found for the given date.
+
+
+
+
+
+
+## Get Get Daily Reports
+
+**Endpoint:** `/getDailyReports`
+
+**Method:** `GET`
+
+**Parameters:**
+NA
+
+**Response:**
+- 200 OK: Returns a map where keys are LocalDate representing dates and values are
+          lists of Transaction_Register objects for each date.
+- 500 Not Found: says internal server error, check for input value format as well.
+- 404 Not Found: check if endpoint entered correctly.
+
+
+
+
+
+## Update a transaction record identified by its ID.
+
+**Endpoint:** `/update/{id}`
+
+**Method:** `PUT`
+
+**Parameters:**
+- '{id}': Path variable representing the ID of the transaction.
+**Request Body**
+Transaction_Register: JSON object containing updated transaction details.
+'customerRegister' (
+                           String name;
+                           String description;
+                           String credit_amount;
+                           String debit_amount;
+                          )   : should be in proper format of "String_input".
+**Response:**
+- 200 OK: No response body. The transaction is updated if found.
+- 500 Not Found: says internal server error, check for input value format as well.
+- 404 Not Found: check if endpoint entered correctly.
+
+
+
+
+
+
+## Delete a transaction record identified by its ID.
+
+**Endpoint:** `/delete/{id}`
+
+**Method:** `DELETE`
+
+**Parameters:**
+- '{id}': Path variable representing the ID of the transaction.
+
+**Response:**
+- 200 OK: No response body. The transaction is deleted if found.
+- 500 Not Found: says internal server error, check for input value format as well.
+- 404 Not Found: check if endpoint entered correctly.
